@@ -1,0 +1,55 @@
+<mockup version="1.0" skin="sketch" measuredW="1214" measuredH="714" mockupW="692" mockupH="702">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::iPhone" x="522" y="12" w="388" h="702" measuredW="282" measuredH="510" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="568" y="151" w="295" h="68" measuredW="254" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>IntroScreen%26bm%3BIntroScreen.bmml%26bm%3BIntroScreen.bmml%26bm%3BIntroScreen.bmml%2CAddExpenses%26bm%3BAddExpenses.bmml%26bm%3BAddExpenses.bmml%26bm%3BAddExpenses.bmml%2CSummary%26bm%3BSummary.bmml%26bm%3BSummary.bmml%26bm%3BSummary.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2246%2C139%2C118%2C207%22%20href%3D%22IntroScreen.bmml%22%20alt%3D%22IntroScreen%22%20id%3D%221_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22120%2C139%2C248%2C207%22%20href%3D%22AddExpenses.bmml%22%20alt%3D%22AddExpenses%22%20id%3D%221_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C139%2C345%2C207%22%20href%3D%22Summary.bmml%22%20alt%3D%22Summary%22%20id%3D%221_2%22/%3E%0A</map>
+        <selectedIndex>2</selectedIndex>
+        <text>Home%2C%20Add%20Expense%2C%20Summary</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::List" x="572" y="249" w="288" h="278" measuredW="100" measuredH="126" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Item%20One%0AItem%20Two%0AItem%20Three</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::LinkBar" x="577" y="228" w="-1" h="-1" measuredW="284" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Description%2C%20Amount%2C%20Time%2C%20Reimbursed</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::StickyNote" x="976" y="80" w="238" h="189" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20user%20will%20be%20able%20to%20tick%20of%20the%20reimbursment%20by%20holding%20the%20element%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="649" y="527" w="134" h="22" measuredW="123" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>Unclaimed%20expenses</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Canvas" x="568" y="549" w="295" h="40" measuredW="100" measuredH="70" zOrder="6" locked="false" isInGroup="-1"/>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::VRule" x="659" y="553" w="-1" h="32" measuredW="5" measuredH="100" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::VRule" x="766" y="553" w="-1" h="32" measuredW="5" measuredH="100" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="588" y="558" w="61" h="22" measuredW="47" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>%A315.00</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="685" y="558" w="61" h="22" measuredW="57" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>%24256.00</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="783" y="558" w="61" h="22" measuredW="54" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>%u20AC44.44</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
