@@ -14,8 +14,12 @@ import android.widget.Spinner;
  */
 public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
-    public int subcategory;
-    public View mView;
+    private int subcategory;
+    private View mView;
+
+    public Spinner mCurrencySpinner;
+    public Spinner mDescSpinner;
+    public Spinner mSubDescSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,7 +42,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
 
     public void initializeMainSpinner(View view){
         mView = view;
-        Spinner mDescSpinner = (Spinner) view.findViewById(R.id.category_spinner);
+        mDescSpinner = (Spinner) view.findViewById(R.id.category_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -53,7 +57,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
     }
 
     public void initializeSecondarySpinner(int sub){
-        Spinner mSubDescSpinner = (Spinner) mView.findViewById(R.id.subcategory_spinner);
+        mSubDescSpinner = (Spinner) mView.findViewById(R.id.subcategory_spinner);
         ArrayAdapter<CharSequence> adapter;
         switch (sub) {
             case 0:
@@ -88,7 +92,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
     }
 
     public void initializeCurrencySpinner(){
-        Spinner mCurrencySpinner = (Spinner) mView.findViewById(R.id.currency_spinner);
+        mCurrencySpinner = (Spinner) mView.findViewById(R.id.currency_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mView.getContext(),
                 R.array.currency_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -72,12 +72,20 @@
 
     </LinearLayout>
 
+     <CheckBox
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/retained_receipt"
+         android:text="Receipt retained"
+         android:layout_marginLeft="10dp"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:id="@+id/addButton"/>
 
 </LinearLayout>
