@@ -1,6 +1,7 @@
 package com.stanislav.hamara.expensesmanager;
 
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -73,13 +74,37 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             mFragment = (Fragment)fragmentList.get(tab.getPosition());
 
         if(mFragment == null){
-            
+            mTabFragment = new TabFragment();
+            Bundle mBundle = new Bundle();
+
+             //control for different tabs
+            switch (tab.getPosition()){
+                case 1:
+                    mBundle.putInt("tabID", 1);
+                    break;
+                case 2:
+                    mBundle.putInt("tabID", 2);
+                    break;
+                case 3:
+                    mBundle.putInt("tabID", 3);
+                    break;
+                default:
+                    break;
+            }
+
+            mTabFragment.setArguments(mBundle);
+            fragmentList.add(mTabFragment);
+        } else {
+            mTabFragment = (TabFragment) mFragment;
         }
+
+        fragmentTransaction.replace(android.R.id.content, mTabFragment);
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
-
+        if(fragmentList.size() > tab.getPosition())
+            fragmentTransaction.remove((Fragment)fragmentList.get(tab.getPosition()));
     }
 
     @Override
