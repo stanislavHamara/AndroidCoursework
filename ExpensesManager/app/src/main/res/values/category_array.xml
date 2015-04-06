@@ -4,7 +4,7 @@
         <item>Meals</item>
         <item>Drinks</item>
         <item>Transport</item>
-        <item>Hotel accommodation</item>
+        <item>Accommodation</item>
         <item>Other</item>
     </string-array>
 </resources>

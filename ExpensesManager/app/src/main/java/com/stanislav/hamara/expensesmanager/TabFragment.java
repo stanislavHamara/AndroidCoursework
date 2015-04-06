@@ -16,8 +16,6 @@ import android.widget.Spinner;
 public class TabFragment extends Fragment {
 
     private int mTabID;
-    private Spinner mDescSpinner;
-    private Spinner mSubDescSpinner;
     private SpinnerActivity mSpinnerActivity;
 
     @Override
@@ -50,7 +48,5 @@ public class TabFragment extends Fragment {
         }
         return view;
     }
-
-
 }
 

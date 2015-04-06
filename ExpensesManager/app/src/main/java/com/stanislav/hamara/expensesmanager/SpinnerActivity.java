@@ -47,6 +47,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
 
         //initialize the subcategory spinner based on what is selected in the first one
         initializeSecondarySpinner(subcategory);
+        initializeCurrencySpinner();
 
 
     }
@@ -84,5 +85,13 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSubDescSpinner.setAdapter(adapter);
+    }
+
+    public void initializeCurrencySpinner(){
+        Spinner mCurrencySpinner = (Spinner) mView.findViewById(R.id.currency_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mView.getContext(),
+                R.array.currency_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCurrencySpinner.setAdapter(adapter);
     }
 }
