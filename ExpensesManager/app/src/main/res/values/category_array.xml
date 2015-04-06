@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="category_array">
+        <item>Meals</item>
         <item>Drinks</item>
-        <item>Food</item>
+        <item>Transport</item>
         <item>Hotel accommodation</item>
         <item>Other</item>
     </string-array>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drink_array">
+        <item>Coffee</item>
+        <item>Soft Drinks</item>
+        <item>Beer</item>
+        <item>Alcohol</item>
+    </string-array>
+</resources>
