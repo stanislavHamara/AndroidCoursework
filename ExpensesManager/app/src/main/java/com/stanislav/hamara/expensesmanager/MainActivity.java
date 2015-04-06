@@ -5,8 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,8 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     List fragmentList = new ArrayList();
+    // initialize the spinners
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         mTab3.setText("Summary");
         mTab3.setTabListener(this);
         mActionBar.addTab(mTab3);
+
 
     }
 
@@ -76,17 +82,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         if(mFragment == null){
             mTabFragment = new TabFragment();
             Bundle mBundle = new Bundle();
-
              //control for different tabs
             switch (tab.getPosition()){
+                case 0:
+                    mBundle.putInt("tabID", 0);
+                    break;
                 case 1:
                     mBundle.putInt("tabID", 1);
                     break;
                 case 2:
                     mBundle.putInt("tabID", 2);
-                    break;
-                case 3:
-                    mBundle.putInt("tabID", 3);
                     break;
                 default:
                     break;

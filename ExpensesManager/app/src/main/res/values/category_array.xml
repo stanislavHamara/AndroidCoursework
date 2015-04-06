@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="planets_array">
+    <string-array name="category_array">
         <item>Drinks</item>
-        <item>Drinks</item>
+        <item>Food</item>
         <item>Hotel accommodation</item>
         <item>Other</item>
     </string-array>

@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * Created by stan on 06/04/15.
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 public class TabFragment extends Fragment {
 
     private int mTabID;
+    private Spinner mDescSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,6 +35,11 @@ public class TabFragment extends Fragment {
                 break;
             case 1:
                 view = inflater.inflate(R.layout.fragment_tab_expenses, null);
+                mDescSpinner = (Spinner) view.findViewById(R.id.category_spinner);
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(view.getContext(),
+                        R.array.category_array, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                mDescSpinner.setAdapter(adapter);
                 break;
             case 2:
                 view = inflater.inflate(R.layout.fragment_tab_summary, null);
