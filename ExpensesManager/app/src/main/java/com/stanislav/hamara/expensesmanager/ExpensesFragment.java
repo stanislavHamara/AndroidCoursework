@@ -48,6 +48,7 @@ public class ExpensesFragment {
                 descriptionEditText = (EditText) view.findViewById(R.id.descriptionText);
                 cb = (CheckBox) view.findViewById(R.id.retained_receipt);
                 currencySpinner = (Spinner) view.findViewById(R.id.currency_spinner);
+
                 //amount of money
                 try {
                     wholeCurrencyET = (EditText) view.findViewById(R.id.whole_currency);
@@ -76,10 +77,9 @@ public class ExpensesFragment {
                 } catch (NumberFormatException e){
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Alert")
-                            .setMessage("Invalid format. Currency must be a number in range 0-99.")
+                            .setMessage("Invalid format. Currency must be a number in range 0-99 and description can't be empty!")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
