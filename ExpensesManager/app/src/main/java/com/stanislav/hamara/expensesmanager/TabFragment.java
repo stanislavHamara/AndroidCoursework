@@ -86,6 +86,9 @@ public class TabFragment extends Fragment {
                             whole_currency = Integer.parseInt(editText.getText().toString());
                             editText = (EditText) view.findViewById(R.id.small_currency);
                             small_currency = Integer.parseInt(editText.getText().toString());
+
+                            Log.e("Output: ",category + " , " + subcategory + " , " + description + " , " + currency + whole_currency + "." + small_currency);
+
                         } catch (NumberFormatException e){
                             new AlertDialog.Builder(view.getContext())
                                     .setTitle("Alert")
