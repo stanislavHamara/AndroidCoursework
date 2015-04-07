@@ -12,13 +12,13 @@ import java.util.List;
  * Created by stan on 07/04/15.
  */
 public class SummaryFragment {
-    private View view;
+
     private Activity activity;
     ExpenseDataSource mDatasource;
     public final ListView listView;
 
     public SummaryFragment(View view, Activity activity, ExpenseDataSource mDatasource){
-        this.view = view;
+
         this.activity = activity;
         listView  = (ListView) view.findViewById(R.id.purchases_list);
         this.mDatasource = mDatasource;

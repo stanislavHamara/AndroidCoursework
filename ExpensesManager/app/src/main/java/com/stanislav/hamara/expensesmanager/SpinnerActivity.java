@@ -48,7 +48,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
         mDescSpinner.setAdapter(adapter);
         mDescSpinner.setOnItemSelectedListener(this);
 
-        //initialize the subcategory spinner based on what is selected in the first one
+        //initialize the subcategory categorySpinner based on what is selected in the first one
         initializeSecondarySpinner(subcategory);
         initializeCurrencySpinner();
 
@@ -62,18 +62,22 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
             case 0:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.meal_array, android.R.layout.simple_spinner_item);
+                mSubDescSpinner.setEnabled(true);
                 break;
             case 1:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.drink_array, android.R.layout.simple_spinner_item);
+                mSubDescSpinner.setEnabled(true);
                 break;
             case 2:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.transport_array, android.R.layout.simple_spinner_item);
+                mSubDescSpinner.setEnabled(true);
                 break;
             case 3:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.accomodation_array, android.R.layout.simple_spinner_item);
+                mSubDescSpinner.setEnabled(true);
                 break;
             case 4:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
@@ -83,6 +87,7 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
             default:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.category_array, android.R.layout.simple_spinner_item);
+                mSubDescSpinner.setEnabled(true);
                 break;
 
         }

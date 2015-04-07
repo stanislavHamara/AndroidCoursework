@@ -2,12 +2,12 @@ package com.stanislav.hamara.expensesmanager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * Created by stan on 07/04/15.
@@ -16,6 +16,14 @@ public class ExpensesFragment {
 
     private View view;
     private ExpenseDataSource mDatasource;
+
+    Spinner categorySpinner;
+    Spinner subcategorySpinner;
+    EditText descriptionEditText;
+    CheckBox cb;
+    Spinner currencySpinner;
+    EditText wholeCurrencyET;
+    EditText smallCurrencyET;
 
 
     public ExpensesFragment(View view, ExpenseDataSource mDatasource){
@@ -26,7 +34,7 @@ public class ExpensesFragment {
     }
 
     private void initExpenses(){
-        //initialize the main spinner
+        //initialize the main categorySpinner
         SpinnerActivity mSpinnerActivity = new SpinnerActivity();
         mSpinnerActivity.initializeMainSpinner(view);
         Button mAddButton = (Button) view.findViewById(R.id.addButton);
@@ -35,30 +43,35 @@ public class ExpensesFragment {
             @Override
             public void onClick(View v) {
                 //assign relevant values from UI to variables
-                Spinner spinner = (Spinner) view.findViewById(R.id.category_spinner);
-                Spinner spinner2 = (Spinner) view.findViewById(R.id.subcategory_spinner);
-                EditText editText = (EditText) view.findViewById(R.id.descriptionText);
-                CheckBox cb = (CheckBox) view.findViewById(R.id.retained_receipt);
-                Spinner spinner3 = (Spinner) view.findViewById(R.id.currency_spinner);
+                categorySpinner = (Spinner) view.findViewById(R.id.category_spinner);
+                subcategorySpinner = (Spinner) view.findViewById(R.id.subcategory_spinner);
+                descriptionEditText = (EditText) view.findViewById(R.id.descriptionText);
+                cb = (CheckBox) view.findViewById(R.id.retained_receipt);
+                currencySpinner = (Spinner) view.findViewById(R.id.currency_spinner);
                 //amount of money
                 try {
-                    EditText editText2 = (EditText) view.findViewById(R.id.whole_currency);
-                    EditText editText3 = (EditText) view.findViewById(R.id.small_currency);
-                    Expense expense = new Expense(spinner.getSelectedItem().toString(),
-                            spinner2.getSelectedItem().toString(),
-                            editText.getText().toString(),
-                            spinner3.getSelectedItem().toString(),
-                            Integer.parseInt(editText2.getText().toString()),
-                            Integer.parseInt(editText3.getText().toString()),
+                    wholeCurrencyET = (EditText) view.findViewById(R.id.whole_currency);
+                    smallCurrencyET = (EditText) view.findViewById(R.id.small_currency);
+
+                    int wCurrency = Integer.parseInt(wholeCurrencyET.getText().toString());
+                    int sCurrency = Integer.parseInt(smallCurrencyET.getText().toString());
+
+                    if(wCurrency > 999 || sCurrency > 99 || descriptionEditText.getText().toString().length() == 0)
+                        throw new NumberFormatException();
+
+                    //add to database
+                    mDatasource.createExpense(categorySpinner.getSelectedItem().toString(),
+                            subcategorySpinner.getSelectedItem().toString(),
+                            descriptionEditText.getText().toString(),
+                            currencySpinner.getSelectedItem().toString(),
+                            wCurrency,
+                            sCurrency,
                             cb.isSelected());
 
-                    mDatasource.createExpense(spinner.getSelectedItem().toString(),
-                            spinner2.getSelectedItem().toString(),
-                            editText.getText().toString(),
-                            spinner3.getSelectedItem().toString(),
-                            Integer.parseInt(editText2.getText().toString()),
-                            Integer.parseInt(editText3.getText().toString()),
-                            cb.isSelected());
+                    Toast.makeText(view.getContext(), "Expense added",
+                            Toast.LENGTH_LONG).show();
+
+                    clearUI();
 
                 } catch (NumberFormatException e){
                     new AlertDialog.Builder(view.getContext())
@@ -74,5 +87,15 @@ public class ExpensesFragment {
                 }
             }
         });
+    }
+
+    private void clearUI(){
+        categorySpinner.setSelection(0);
+        subcategorySpinner.setSelection(0);
+        descriptionEditText.setText("");
+        cb.setSelected(false);
+        currencySpinner.setSelection(0);
+        wholeCurrencyET.setText("");
+        smallCurrencyET.setText("");
     }
 }
