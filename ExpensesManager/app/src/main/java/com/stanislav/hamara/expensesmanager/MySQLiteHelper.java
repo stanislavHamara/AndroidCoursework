@@ -12,16 +12,29 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME = "task";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_NAME = "desc";
+    public static final String COLUMN_CATEORY = "category";
+    public static final String COLUMN_SUBCATEGORY = "subcategory";
+    public static final String COLUMN_DESC = "description";
+    public static final String COLUMN_CURRENCY = "currency";
+    public static final String COLUMN_WHOLE = "wholeC";
+    public static final String COLUMN_SMALL = "smallC";
+    public static final String COLUMN_RECLAIMED = "reclaimed";
 
     private static final String DATABASE_NAME = "expenses.db";
     private static final int DATABASE_VERSION = 1;
 
     //creation query
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_NAME + "( " + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_NAME
-            + " text not null);";
+            + TABLE_NAME + "( "
+            + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_CATEORY + " text not null, "
+            + COLUMN_SUBCATEGORY + " text not null"
+            + COLUMN_DESC + " text not null"
+            + COLUMN_CURRENCY + " text not null"
+            + COLUMN_WHOLE + " integer"
+            + COLUMN_SMALL + " integer"
+            + COLUMN_RECLAIMED+ " text not null"
+            + ");";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
