@@ -15,13 +15,7 @@ import android.widget.Spinner;
 public class ExpensesFragment {
 
     private View view;
-    private String category;
-    private String subcategory;
-    private String description;
-    private String currency;
-    private int whole_currency;
-    private int small_currency;
-    private boolean receipt_retianed;
+
 
     public ExpensesFragment(View view){
         this.view = view;
@@ -39,35 +33,24 @@ public class ExpensesFragment {
             @Override
             public void onClick(View v) {
                 //assign relevant values from UI to variables
-
-                //Main category
                 Spinner spinner = (Spinner) view.findViewById(R.id.category_spinner);
-                category = spinner.getSelectedItem().toString();
-
-                //subcategory
-                spinner = (Spinner) view.findViewById(R.id.subcategory_spinner);
-                subcategory = spinner.getSelectedItem().toString();
-
-                //description
+                Spinner spinner2 = (Spinner) view.findViewById(R.id.subcategory_spinner);
                 EditText editText = (EditText) view.findViewById(R.id.descriptionText);
-                description = editText.getText().toString();
-
-                //retained receipt
                 CheckBox cb = (CheckBox) view.findViewById(R.id.retained_receipt);
-                receipt_retianed = cb.isChecked();
-
-                //currency
-                spinner = (Spinner) view.findViewById(R.id.currency_spinner);
-                currency = spinner.getSelectedItem().toString();
-
+                Spinner spinner3 = (Spinner) view.findViewById(R.id.currency_spinner);
                 //amount of money
                 try {
-                    editText = (EditText) view.findViewById(R.id.whole_currency);
-                    whole_currency = Integer.parseInt(editText.getText().toString());
-                    editText = (EditText) view.findViewById(R.id.small_currency);
-                    small_currency = Integer.parseInt(editText.getText().toString());
+                    EditText editText2 = (EditText) view.findViewById(R.id.whole_currency);
+                    EditText editText3 = (EditText) view.findViewById(R.id.small_currency);
+                    Expense expense = new Expense(spinner.getSelectedItem().toString(),
+                            spinner2.getSelectedItem().toString(),
+                            editText.getText().toString(),
+                            spinner3.getSelectedItem().toString(),
+                            Integer.parseInt(editText2.getText().toString()),
+                            Integer.parseInt(editText3.getText().toString()),
+                            cb.isSelected());
 
-                    Log.e("Output: ", category + " , " + subcategory + " , " + description + " , " + currency + whole_currency + "." + small_currency);
+                    Log.e("Output: ", expense.toString());
 
                 } catch (NumberFormatException e){
                     new AlertDialog.Builder(view.getContext())
