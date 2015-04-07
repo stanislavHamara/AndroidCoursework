@@ -24,7 +24,6 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        Log.e("Spinner created", " ");
 
     }
 

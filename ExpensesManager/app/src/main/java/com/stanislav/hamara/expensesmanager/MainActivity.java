@@ -5,11 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,13 +71,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
         Fragment mFragment = null;
-        TabFragment mTabFragment = null;
+        TabsActivity mTabFragment = null;
 
         if(fragmentList.size() > tab.getPosition())
             mFragment = (Fragment)fragmentList.get(tab.getPosition());
 
         if(mFragment == null){
-            mTabFragment = new TabFragment();
+            mTabFragment = new TabsActivity();
             Bundle mBundle = new Bundle();
              //control for different tabs
             switch (tab.getPosition()){
@@ -100,7 +97,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             mTabFragment.setArguments(mBundle);
             fragmentList.add(mTabFragment);
         } else {
-            mTabFragment = (TabFragment) mFragment;
+            mTabFragment = (TabsActivity) mFragment;
         }
 
         fragmentTransaction.replace(android.R.id.content, mTabFragment);
