@@ -15,10 +15,12 @@ import android.widget.Spinner;
 public class ExpensesFragment {
 
     private View view;
+    private ExpenseDataSource mDatasource;
 
 
-    public ExpensesFragment(View view){
+    public ExpensesFragment(View view, ExpenseDataSource mDatasource){
         this.view = view;
+        this.mDatasource = mDatasource;
         initExpenses();
 
     }
@@ -50,7 +52,13 @@ public class ExpensesFragment {
                             Integer.parseInt(editText3.getText().toString()),
                             cb.isSelected());
 
-                    Log.e("Output: ", expense.toString());
+                    mDatasource.createExpense(spinner.getSelectedItem().toString(),
+                            spinner2.getSelectedItem().toString(),
+                            editText.getText().toString(),
+                            spinner3.getSelectedItem().toString(),
+                            Integer.parseInt(editText2.getText().toString()),
+                            Integer.parseInt(editText3.getText().toString()),
+                            cb.isSelected());
 
                 } catch (NumberFormatException e){
                     new AlertDialog.Builder(view.getContext())

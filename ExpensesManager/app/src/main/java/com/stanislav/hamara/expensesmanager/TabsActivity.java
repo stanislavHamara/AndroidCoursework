@@ -13,13 +13,15 @@ import android.view.ViewGroup;
 public class TabsActivity extends Fragment {
 
     private int mTabID;
-
+    private ExpenseDataSource mDatasource;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         Bundle mBundle = getArguments();
         mTabID = mBundle.getInt("tabID");
+        mDatasource = new ExpenseDataSource(getActivity().getBaseContext());
+        mDatasource.open();
 
     }
 
@@ -30,15 +32,16 @@ public class TabsActivity extends Fragment {
         switch (mTabID){
             case 0:
                 view = inflater.inflate(R.layout.fragment_tab_home, null);
+
                 break;
             case 1:
                 view = inflater.inflate(R.layout.fragment_tab_expenses, null);
-                ExpensesFragment expenses = new ExpensesFragment(view);
+                ExpensesFragment expenses = new ExpensesFragment(view, mDatasource);
                 break;
 
             case 2:
                 view = inflater.inflate(R.layout.fragment_tab_summary, null);
-                SummaryFragment summary = new SummaryFragment(view, getActivity());
+                SummaryFragment summary = new SummaryFragment(view, getActivity(), mDatasource);
                 break;
 
             default:

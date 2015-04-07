@@ -15,7 +15,14 @@ public class ExpenseDataSource {
 
     private SQLiteDatabase mDatabase;
     private MySQLiteHelper mDbHelper;
-    private String[] allColumns = {MySQLiteHelper.COLUMN_ID, MySQLiteHelper.COLUMN_CATEORY};
+    private String[] allColumns = {MySQLiteHelper.COLUMN_ID,
+            MySQLiteHelper.COLUMN_CATEORY,
+            MySQLiteHelper.COLUMN_SUBCATEGORY,
+            MySQLiteHelper.COLUMN_DESC,
+            MySQLiteHelper.COLUMN_CURRENCY,
+            MySQLiteHelper.COLUMN_WHOLE,
+            MySQLiteHelper.COLUMN_SMALL,
+            MySQLiteHelper.COLUMN_RECLAIMED};
 
     public ExpenseDataSource(Context context){
         mDbHelper = new MySQLiteHelper(context);
@@ -45,27 +52,27 @@ public class ExpenseDataSource {
     }
 
     public List<Expense> getAllTasks() {
-        List<Expense> tasks = new ArrayList<Expense>();
+        List<Expense> expenses = new ArrayList<Expense>();
         Cursor cursor = mDatabase.query(MySQLiteHelper.TABLE_NAME,
                 allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Expense expense = cursorToTask(cursor);
-            tasks.add(expense);
+            expenses.add(expense);
             cursor.moveToNext();
         }
         // Make sure to close the cursor
         cursor.close();
-        return tasks;
+        return expenses;
     }
 
     private Expense cursorToTask(Cursor cursor) {
-        Expense task = new Expense(cursor.getString(0),
-                cursor.getString(1),
+        Expense task = new Expense(cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getInt(4),
+                cursor.getString(4),
                 cursor.getInt(5),
+                cursor.getInt(6),
                 false);
 
         return task;
