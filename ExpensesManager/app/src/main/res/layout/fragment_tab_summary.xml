@@ -25,7 +25,8 @@
             android:textSize="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/pound_expenses_view"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +34,8 @@
             android:textSize="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="1"/>/>
+            android:layout_weight="1"
+            android:id="@+id/dollar_expenses_view"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +43,8 @@
             android:textSize="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="1"/>/>
+            android:layout_weight="1"
+            android:id="@+id/euro_expenses_view"/>
     </LinearLayout>
 
     <TextView

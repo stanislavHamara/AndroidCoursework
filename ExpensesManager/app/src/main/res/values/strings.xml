@@ -11,5 +11,7 @@
     <string name="enter_description">Enter description</string>
     <string name="receipt_retained">Receipt retained:</string>
     <string name="expenses">Expenses to reclaim</string>
+    <string name="welcome">Welcome to your Travel Expense Manager</string>
+    <string name="current">Current journey</string>
 
 </resources>
