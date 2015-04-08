@@ -12,13 +12,13 @@ import java.util.List;
 /**
  * Created by stan on 07/04/15.
  */
-public class ExpensesAdapter extends BaseAdapter {
+public class ExpenseListAdapter extends BaseAdapter {
 
     Context context;
     List<Expense> list;
     private static LayoutInflater inflater = null;
 
-    public ExpensesAdapter(Context context, List<Expense> list){
+    public ExpenseListAdapter(Context context, List<Expense> list){
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

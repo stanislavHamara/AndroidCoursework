@@ -3,10 +3,8 @@ package com.stanislav.hamara.expensesmanager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +19,7 @@ public class SummaryFragment {
 
     private Activity activity;
     private List<Expense> values;
-    private ExpensesAdapter expensesAdapter;
+    private ExpenseListAdapter expensesAdapter;
     public final ListView listView;
 
     ExpenseDataSource mDatasource;
@@ -80,7 +78,7 @@ public class SummaryFragment {
     private void initSummary(){
 
         values = mDatasource.getAllTasks();
-        expensesAdapter = new ExpensesAdapter(activity.getBaseContext(),values);
+        expensesAdapter = new ExpenseListAdapter(activity.getBaseContext(),values);
         listView.setAdapter(expensesAdapter);
         updateFooter();
 
