@@ -20,8 +20,11 @@ import java.util.List;
 public class SummaryFragment {
 
     private Activity activity;
-    ExpenseDataSource mDatasource;
+    private List<Expense> values;
+    private ExpensesAdapter expensesAdapter;
     public final ListView listView;
+
+    ExpenseDataSource mDatasource;
 
     TextView poundExpenses;
     TextView dollarExpenses;
@@ -39,14 +42,20 @@ public class SummaryFragment {
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, long id) {
                 new AlertDialog.Builder(view.getContext())
                         .setTitle("Reclaim Expense")
                         .setMessage("Are you sure you want to reclaim this expense?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+
+                                //remove from listView
+                                values.remove(position);
+                                expensesAdapter.notifyDataSetChanged();
+
                                 Toast.makeText(view.getContext(), "Expense reclaimed",
                                         Toast.LENGTH_LONG).show();
+
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -65,8 +74,9 @@ public class SummaryFragment {
 
     private void initSummary(){
 
-        List<Expense> values = mDatasource.getAllTasks();
-        listView.setAdapter(new ExpensesAdapter(activity.getBaseContext(),values));
+        values = mDatasource.getAllTasks();
+        expensesAdapter = new ExpensesAdapter(activity.getBaseContext(),values);
+        listView.setAdapter(expensesAdapter);
 
         float pounds = 0;
         float dollars = 0;
