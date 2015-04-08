@@ -23,9 +23,12 @@ public class ExpenseDataSource {
             MySQLiteHelper.COLUMN_WHOLE,
             MySQLiteHelper.COLUMN_SMALL,
             MySQLiteHelper.COLUMN_RECLAIMED};
+            Context context;
 
-    public ExpenseDataSource(Context context){
-        mDbHelper = new MySQLiteHelper(context);
+
+    public ExpenseDataSource(Context c){
+        mDbHelper = new MySQLiteHelper(c);
+        context = c;
     }
 
     public void open(){
@@ -34,6 +37,10 @@ public class ExpenseDataSource {
 
     public void close(){
         mDbHelper.close();
+    }
+
+    public void deleteDatabase(){
+        context.deleteDatabase("expenses.db");
     }
 
     public Expense createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r){
@@ -70,7 +77,9 @@ public class ExpenseDataSource {
 
         /*this should have been done with ID instead,
         but I forgot to add ID to Expenses class and
-        assuming that each description is unique, this will work too*/
+        assuming that each description is unique, this will work too
+
+        I could not make it work with IDs*/
 
         System.out.println("Comment deleted with id: " + desc);
         mDatabase.delete(MySQLiteHelper.TABLE_NAME, MySQLiteHelper.COLUMN_DESC

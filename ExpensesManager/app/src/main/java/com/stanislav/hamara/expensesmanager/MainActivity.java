@@ -95,7 +95,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     break;
                 case 2:
                     mBundle.putInt("tabID", 2);
-
                     break;
                 default:
                     break;

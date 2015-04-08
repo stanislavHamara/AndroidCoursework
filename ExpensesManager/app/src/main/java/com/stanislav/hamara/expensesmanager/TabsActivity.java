@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by stan on 06/04/15.
@@ -15,6 +16,7 @@ public class TabsActivity extends Fragment {
 
     private int mTabID;
     private ExpenseDataSource mDatasource;
+    private Button deleteButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -33,7 +35,16 @@ public class TabsActivity extends Fragment {
         switch (mTabID){
             case 0:
                 view = inflater.inflate(R.layout.fragment_tab_home, null);
-
+                deleteButton = (Button) view.findViewById(R.id.delete_button);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mDatasource.close();
+                        mDatasource.deleteDatabase();
+                        mDatasource = new ExpenseDataSource(getActivity().getBaseContext());
+                        mDatasource.open();
+                    }
+                });
                 break;
             case 1:
                 view = inflater.inflate(R.layout.fragment_tab_expenses, null);
@@ -43,7 +54,6 @@ public class TabsActivity extends Fragment {
             case 2:
                 view = inflater.inflate(R.layout.fragment_tab_summary, null);
                 SummaryFragment summary = new SummaryFragment(view, getActivity(), mDatasource);
-                Log.e("2", "?");
                 break;
 
             default:

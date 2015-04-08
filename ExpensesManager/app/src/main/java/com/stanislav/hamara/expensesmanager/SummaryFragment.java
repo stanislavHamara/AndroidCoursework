@@ -55,6 +55,8 @@ public class SummaryFragment {
                                 //remove from listView
                                 values.remove(position);
                                 expensesAdapter.notifyDataSetChanged();
+                                //update total expenses
+                                updateFooter();
 
                                 Toast.makeText(view.getContext(), "Expense reclaimed",
                                         Toast.LENGTH_LONG).show();
@@ -80,7 +82,11 @@ public class SummaryFragment {
         values = mDatasource.getAllTasks();
         expensesAdapter = new ExpensesAdapter(activity.getBaseContext(),values);
         listView.setAdapter(expensesAdapter);
+        updateFooter();
 
+    }
+
+    private void updateFooter(){
         float pounds = 0;
         float dollars = 0;
         float euros = 0;
@@ -98,7 +104,5 @@ public class SummaryFragment {
         poundExpenses.setText("£" + String.format("%.2f", pounds));
         dollarExpenses.setText("$" + String.format("%.2f", dollars));
         euroExpenses.setText("€" + String.format("%.2f", euros));
-
-
     }
 }
