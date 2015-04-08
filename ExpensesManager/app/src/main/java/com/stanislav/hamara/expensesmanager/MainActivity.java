@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,8 +15,9 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    List fragmentList = new ArrayList();
-    // initialize the spinners
+    private List fragmentList = new ArrayList();
+    public static boolean journeyCreated = false;
+
 
 
     @Override
@@ -29,17 +31,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         ActionBar.Tab mTab = mActionBar.newTab();
         mTab.setText("Home");
         mTab.setTabListener(this);
-        mActionBar.addTab(mTab);
+        mActionBar.addTab(mTab, 0, true);
 
         ActionBar.Tab mTab2 = mActionBar.newTab();
         mTab2.setText("Expenses");
         mTab2.setTabListener(this);
-        mActionBar.addTab(mTab2);
+        mActionBar.addTab(mTab2, 1 , false);
 
         ActionBar.Tab mTab3 = mActionBar.newTab();
         mTab3.setText("Summary");
         mTab3.setTabListener(this);
-        mActionBar.addTab(mTab3);
+        mActionBar.addTab(mTab3, 2 , false);
+
 
 
     }
@@ -73,6 +76,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         Fragment mFragment = null;
         TabsActivity mTabFragment = null;
 
+
+
         if(fragmentList.size() > tab.getPosition())
             mFragment = (Fragment)fragmentList.get(tab.getPosition());
 
@@ -86,9 +91,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     break;
                 case 1:
                     mBundle.putInt("tabID", 1);
+
                     break;
                 case 2:
                     mBundle.putInt("tabID", 2);
+
                     break;
                 default:
                     break;
@@ -98,6 +105,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             fragmentList.add(mTabFragment);
         } else {
             mTabFragment = (TabsActivity) mFragment;
+
         }
 
         fragmentTransaction.replace(android.R.id.content, mTabFragment);

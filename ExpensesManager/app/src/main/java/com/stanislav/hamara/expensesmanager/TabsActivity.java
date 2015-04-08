@@ -3,6 +3,7 @@ package com.stanislav.hamara.expensesmanager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class TabsActivity extends Fragment {
             case 2:
                 view = inflater.inflate(R.layout.fragment_tab_summary, null);
                 SummaryFragment summary = new SummaryFragment(view, getActivity(), mDatasource);
+                Log.e("2", "?");
                 break;
 
             default:
