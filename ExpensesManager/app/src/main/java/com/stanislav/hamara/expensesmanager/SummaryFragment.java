@@ -30,7 +30,7 @@ public class SummaryFragment {
     TextView dollarExpenses;
     TextView euroExpenses;
 
-    public SummaryFragment(View view, Activity activity, ExpenseDataSource mDatasource){
+    public SummaryFragment(View view, Activity activity, final ExpenseDataSource mDatasource){
 
         this.activity = activity;
         listView  = (ListView) view.findViewById(R.id.purchases_list);
@@ -49,6 +49,9 @@ public class SummaryFragment {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
+                                //remove from database
+                                Expense expense = (Expense)expensesAdapter.getItem(position);
+                                mDatasource.deleteExpense(expense.getDescription());
                                 //remove from listView
                                 values.remove(position);
                                 expensesAdapter.notifyDataSetChanged();

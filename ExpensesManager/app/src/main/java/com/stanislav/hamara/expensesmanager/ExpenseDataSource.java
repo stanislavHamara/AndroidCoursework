@@ -66,6 +66,17 @@ public class ExpenseDataSource {
         return expenses;
     }
 
+    public void deleteExpense(String desc){
+
+        /*this should have been done with ID instead,
+        but I forgot to add ID to Expenses class and
+        assuming that each description is unique, this will work too*/
+
+        System.out.println("Comment deleted with id: " + desc);
+        mDatabase.delete(MySQLiteHelper.TABLE_NAME, MySQLiteHelper.COLUMN_DESC
+                + " like  '%" + desc + "'", null);
+    }
+
     private Expense cursorToTask(Cursor cursor) {
         Expense task = new Expense(cursor.getString(1),
                 cursor.getString(2),
