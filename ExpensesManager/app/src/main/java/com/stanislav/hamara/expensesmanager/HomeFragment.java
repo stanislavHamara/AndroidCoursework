@@ -3,21 +3,22 @@ package com.stanislav.hamara.expensesmanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.InvalidPropertiesFormatException;
+
+import java.util.zip.DataFormatException;
 
 /**
  * Created by stan on 08/04/15.
  */
 public class HomeFragment {
 
-    private static String PREFS_NAME = "my_preferences";
+    public static String PREFS_NAME = "my_preferences";
     private Button deleteButton;
     private Button addButton;
     private  EditText journeyName;
@@ -88,14 +89,14 @@ public class HomeFragment {
                     if(!journeyName.getText().toString().isEmpty())
                         editor.putString("name", journeyName.getText().toString());
                     else
-                        throw new NumberFormatException();
+                        throw new DataFormatException();
                     editor.commit();
 
                     SharedPreferences prefs = view.getContext().getSharedPreferences(PREFS_NAME, 0);
                     String name = prefs.getString("name", "None");
                     currentJourney.setText(name);
                     journeyIsSet(true);
-                } catch (NumberFormatException e){
+                } catch (DataFormatException e){
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Alert")
                             .setMessage("Invalid format. Journey name can't be empty.")
