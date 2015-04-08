@@ -16,7 +16,6 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     private List fragmentList = new ArrayList();
-    public static boolean journeyCreated = false;
 
 
 

@@ -35,16 +35,8 @@ public class TabsActivity extends Fragment {
         switch (mTabID){
             case 0:
                 view = inflater.inflate(R.layout.fragment_tab_home, null);
-                deleteButton = (Button) view.findViewById(R.id.delete_button);
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mDatasource.close();
-                        mDatasource.deleteDatabase();
-                        mDatasource = new ExpenseDataSource(getActivity().getBaseContext());
-                        mDatasource.open();
-                    }
-                });
+                HomeFragment home = new HomeFragment(view, mDatasource);
+
                 break;
             case 1:
                 view = inflater.inflate(R.layout.fragment_tab_expenses, null);

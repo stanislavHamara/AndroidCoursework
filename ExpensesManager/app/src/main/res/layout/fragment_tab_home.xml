@@ -32,14 +32,14 @@
         android:textSize="20dp"
         android:elegantTextHeight="false"
         android:gravity="center_horizontal"
-        android:id="@+id/textView3"
+        android:id="@+id/current_display"
         android:layout_marginTop="15dp"
         android:layout_gravity="right" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/journeyName"
         android:hint="Enter new journey"
         android:singleLine="true"
         android:layout_marginTop="10dp" />
@@ -52,11 +52,13 @@
         <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Journey"/>
+        android:text="Add Journey"
+        android:id="@+id/add_button"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete Journey"
+            android:enabled="false"
             android:id="@+id/delete_button"/>
         </LinearLayout>
 
