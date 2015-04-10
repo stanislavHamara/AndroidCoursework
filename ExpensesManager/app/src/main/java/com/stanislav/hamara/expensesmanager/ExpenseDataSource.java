@@ -44,7 +44,7 @@ public class ExpenseDataSource {
         context.deleteDatabase("expenses.db");
     }
 
-    public Expense createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r, String d){
+    public void createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r, String d){
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_CATEORY, c);
         values.put(MySQLiteHelper.COLUMN_SUBCATEGORY, sc);
@@ -56,8 +56,6 @@ public class ExpenseDataSource {
         values.put(MySQLiteHelper.COLUMN_DATE, d);
 
         mDatabase.insert(MySQLiteHelper.TABLE_NAME, null, values);
-        Expense expense = new Expense(c, sc, desc, curr, w, s, r, d);
-        return expense;
     }
 
     public List<Expense> getAllTasks() {
