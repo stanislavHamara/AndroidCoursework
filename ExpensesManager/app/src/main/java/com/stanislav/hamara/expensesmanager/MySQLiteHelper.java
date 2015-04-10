@@ -19,6 +19,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WHOLE = "wholeC";
     public static final String COLUMN_SMALL = "smallC";
     public static final String COLUMN_RECLAIMED = "reclaimed";
+    public static final String COLUMN_DATE = "date";
 
     private static final String DATABASE_NAME = "expenses.db";
     private static final int DATABASE_VERSION = 1;
@@ -33,7 +34,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_CURRENCY + " text not null,"
             + COLUMN_WHOLE + " integer,"
             + COLUMN_SMALL + " integer,"
-            + COLUMN_RECLAIMED+ " text not null"
+            + COLUMN_RECLAIMED+ " text not null,"
+            + COLUMN_DATE+ " text not null"
             + ");";
 
     public MySQLiteHelper(Context context) {

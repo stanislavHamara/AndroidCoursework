@@ -11,8 +11,9 @@ public class Expense {
     private int whole_currency;
     private int small_currency;
     private boolean receipt_retianed;
+    private String date;
 
-    public Expense(String c, String sc, String desc, String curr, int w, int s, boolean r){
+    public Expense(String c, String sc, String desc, String curr, int w, int s, boolean r, String d){
         category = c;
         subcategory = sc;
         description = desc;
@@ -20,6 +21,7 @@ public class Expense {
         whole_currency = w;
         small_currency = s;
         receipt_retianed = r;
+        date = d;
 
     };
 
@@ -49,6 +51,10 @@ public class Expense {
 
     public boolean isReceipt_retianed() {
         return receipt_retianed;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     @Override

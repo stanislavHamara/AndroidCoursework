@@ -48,10 +48,12 @@ public class ExpenseListAdapter extends BaseAdapter {
         TextView category = (TextView) vi.findViewById(R.id.category);
         TextView desc = (TextView) vi.findViewById(R.id.desciption);
         TextView price = (TextView) vi.findViewById(R.id.price);
+        TextView date = (TextView) vi.findViewById(R.id.time);
 
         category.setText(list.get(position).getCategory() + ", " + list.get(position).getSubcategory());
         desc.setText(list.get(position).getDescription());
         price.setText(list.get(position).getCurrency() + list.get(position).getWhole_currency() + "." + list.get(position).getSmall_currency());
+        date.setText(list.get(position).getDate());
         return  vi;
     }
 }

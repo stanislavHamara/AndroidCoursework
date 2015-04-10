@@ -3,6 +3,7 @@ package com.stanislav.hamara.expensesmanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +11,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.zip.DataFormatException;
 
 /**
@@ -27,6 +31,7 @@ public class ExpensesFragment {
     Spinner currencySpinner;
     EditText wholeCurrencyET;
     EditText smallCurrencyET;
+    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 
 
     public ExpensesFragment(View view, ExpenseDataSource mDatasource){
@@ -37,11 +42,11 @@ public class ExpensesFragment {
     }
 
     private void initExpenses(){
+
         //initialize the main categorySpinner
         SpinnerActivity mSpinnerActivity = new SpinnerActivity();
         mSpinnerActivity.initializeMainSpinner(view);
         Button mAddButton = (Button) view.findViewById(R.id.addButton);
-
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +55,8 @@ public class ExpensesFragment {
                     //find out if any journey si created at all
                     SharedPreferences prefs = view.getContext().getSharedPreferences(HomeFragment.PREFS_NAME, 0);
                     String name = prefs.getString("name", "None");
-                    if(name.isEmpty() || name == "None")
+
+                    if(name.isEmpty() || name.contains("None"))
                         throw new DataFormatException();
 
                     //assign relevant values from UI to variables
@@ -61,7 +67,6 @@ public class ExpensesFragment {
                     currencySpinner = (Spinner) view.findViewById(R.id.currency_spinner);
 
                     //amount of money
-
                     wholeCurrencyET = (EditText) view.findViewById(R.id.whole_currency);
                     smallCurrencyET = (EditText) view.findViewById(R.id.small_currency);
 
@@ -78,7 +83,9 @@ public class ExpensesFragment {
                             currencySpinner.getSelectedItem().toString(),
                             wCurrency,
                             sCurrency,
-                            cb.isSelected());
+                            cb.isSelected(),
+                            sdf.format(new Date()));
+
 
                     Toast.makeText(view.getContext(), "Expense added",
                             Toast.LENGTH_LONG).show();

@@ -22,7 +22,8 @@ public class ExpenseDataSource {
             MySQLiteHelper.COLUMN_CURRENCY,
             MySQLiteHelper.COLUMN_WHOLE,
             MySQLiteHelper.COLUMN_SMALL,
-            MySQLiteHelper.COLUMN_RECLAIMED};
+            MySQLiteHelper.COLUMN_RECLAIMED,
+            MySQLiteHelper.COLUMN_DATE};
             Context context;
 
 
@@ -43,7 +44,7 @@ public class ExpenseDataSource {
         context.deleteDatabase("expenses.db");
     }
 
-    public Expense createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r){
+    public Expense createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r, String d){
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_CATEORY, c);
         values.put(MySQLiteHelper.COLUMN_SUBCATEGORY, sc);
@@ -52,9 +53,10 @@ public class ExpenseDataSource {
         values.put(MySQLiteHelper.COLUMN_WHOLE, w);
         values.put(MySQLiteHelper.COLUMN_SMALL, s);
         values.put(MySQLiteHelper.COLUMN_RECLAIMED, r);
+        values.put(MySQLiteHelper.COLUMN_DATE, d);
 
         mDatabase.insert(MySQLiteHelper.TABLE_NAME, null, values);
-        Expense expense = new Expense(c, sc, desc, curr, w, s, r);
+        Expense expense = new Expense(c, sc, desc, curr, w, s, r, d);
         return expense;
     }
 
@@ -93,7 +95,8 @@ public class ExpenseDataSource {
                 cursor.getString(4),
                 cursor.getInt(5),
                 cursor.getInt(6),
-                false);
+                false,
+                cursor.getString(8));
 
         return task;
     }
