@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -30,18 +29,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         ActionBar.Tab mTab = mActionBar.newTab();
         mTab.setText("Home");
         mTab.setTabListener(this);
-        mActionBar.addTab(mTab, 0, true);
+        mActionBar.addTab(mTab, 0);
 
         ActionBar.Tab mTab2 = mActionBar.newTab();
         mTab2.setText("Expenses");
         mTab2.setTabListener(this);
-        mActionBar.addTab(mTab2, 1 , false);
+        mActionBar.addTab(mTab2, 1);
 
         ActionBar.Tab mTab3 = mActionBar.newTab();
         mTab3.setText("Summary");
         mTab3.setTabListener(this);
-        mActionBar.addTab(mTab3, 2 , false);
-
+        mActionBar.addTab(mTab3, 2);
 
 
     }
@@ -61,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
         Fragment mFragment = null;
-        TabsActivity mTabFragment = null;
+        TabsActivity mTabFragment;
 
 
 
@@ -78,7 +76,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     break;
                 case 1:
                     mBundle.putInt("tabID", 1);
-
                     break;
                 case 2:
                     mBundle.putInt("tabID", 2);

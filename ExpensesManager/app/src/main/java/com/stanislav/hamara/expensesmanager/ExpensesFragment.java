@@ -3,7 +3,6 @@ package com.stanislav.hamara.expensesmanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,26 +11,27 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.zip.DataFormatException;
 
 /**
- * Created by stan on 07/04/15.
+ * Created by Stanislav Hamara on 07/04/15.
+ *
+ * ExpensesFragment controls the functionality of expenses tab, which allows the user to create new expenses
  */
 public class ExpensesFragment {
 
     private View view;
     private ExpenseDataSource mDatasource;
 
-    Spinner categorySpinner;
-    Spinner subcategorySpinner;
-    EditText descriptionEditText;
-    CheckBox cb;
-    Spinner currencySpinner;
-    EditText wholeCurrencyET;
-    EditText smallCurrencyET;
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+    private Spinner categorySpinner;
+    private Spinner subcategorySpinner;
+    private EditText descriptionEditText;
+    private CheckBox cb;
+    private Spinner currencySpinner;
+    private EditText wholeCurrencyET;
+    private EditText smallCurrencyET;
+    private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 
 
     public ExpensesFragment(View view, ExpenseDataSource mDatasource){

@@ -14,8 +14,11 @@ import android.widget.Toast;
 import java.util.zip.DataFormatException;
 
 /**
- * Created by stan on 08/04/15.
+ * Created by Stanislav Hamara on 08/04/15.
+ *
+ * HomeFragment controls the home screen; allows the user to create/delete a journey
  */
+
 public class HomeFragment {
 
     public static String PREFS_NAME = "my_preferences";
@@ -46,6 +49,7 @@ public class HomeFragment {
         name = prefs.getString("name", "None");
         currentJourney.setText(name);
 
+        //set the UI based on the existence of the journey
         if(name.contains("None"))
             journeyIsSet(false);
         else
@@ -60,6 +64,7 @@ public class HomeFragment {
                         .setMessage("You are about to delete your journey. There might be some unclaimed expenses. Are you sure you want to continue?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+                                //delete database and create a new empty one
                                 mDatasource.close();
                                 mDatasource.deleteDatabase();
                                 mDatasource = new ExpenseDataSource(view.getContext());
@@ -71,11 +76,11 @@ public class HomeFragment {
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(view.getContext(), "Deletion canceled",
+                                Toast.makeText(view.getContext(), "Deletion Cancelled",
                                         Toast.LENGTH_LONG).show();
                             }
                         })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setIcon(android.R.drawable.ic_delete)
                         .show();
 
             }
@@ -92,6 +97,7 @@ public class HomeFragment {
                         throw new DataFormatException();
                     editor.commit();
 
+                    //set the name of the new journey
                     SharedPreferences prefs = view.getContext().getSharedPreferences(PREFS_NAME, 0);
                     String name = prefs.getString("name", "None");
                     currentJourney.setText(name);
@@ -107,11 +113,11 @@ public class HomeFragment {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
-
             }
         });
     }
 
+    //UI enabling and disabling of elements
     private void journeyIsSet(boolean isSet){
         if(isSet){
             addButton.setEnabled(false);

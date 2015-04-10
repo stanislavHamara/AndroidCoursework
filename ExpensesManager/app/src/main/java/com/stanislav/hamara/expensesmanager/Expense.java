@@ -1,7 +1,8 @@
 package com.stanislav.hamara.expensesmanager;
 
 /**
- * Created by stan on 07/04/15.
+ * Created by Stanislav Hamara on 07/04/15.
+ * Expense class stores the details about every expense added to the database
  */
 public class Expense {
     private String category;

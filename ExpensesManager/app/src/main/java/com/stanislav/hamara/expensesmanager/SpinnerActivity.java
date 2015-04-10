@@ -2,15 +2,16 @@ package com.stanislav.hamara.expensesmanager;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 /**
- * Created by stan on 06/04/15.
+ * Created by Stanislav Hamara on 06/04/15.
+ *
+ * SpinnerActivity implements spinner functionality and controls mainly the content
+ * of the second spinner based on the selection in the first spinner
  */
 public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
@@ -24,19 +25,16 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         subcategory = position;
         initializeSecondarySpinner(position);
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     public void initializeMainSpinner(View view){
@@ -52,32 +50,28 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
         initializeSecondarySpinner(subcategory);
         initializeCurrencySpinner();
 
-
     }
 
     public void initializeSecondarySpinner(int sub){
         mSubDescSpinner = (Spinner) mView.findViewById(R.id.subcategory_spinner);
         ArrayAdapter<CharSequence> adapter;
+        mSubDescSpinner.setEnabled(true);
         switch (sub) {
             case 0:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.meal_array, android.R.layout.simple_spinner_item);
-                mSubDescSpinner.setEnabled(true);
                 break;
             case 1:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.drink_array, android.R.layout.simple_spinner_item);
-                mSubDescSpinner.setEnabled(true);
                 break;
             case 2:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.transport_array, android.R.layout.simple_spinner_item);
-                mSubDescSpinner.setEnabled(true);
                 break;
             case 3:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.accomodation_array, android.R.layout.simple_spinner_item);
-                mSubDescSpinner.setEnabled(true);
                 break;
             case 4:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
@@ -87,7 +81,6 @@ public class SpinnerActivity extends Activity implements AdapterView.OnItemSelec
             default:
                 adapter = ArrayAdapter.createFromResource(mView.getContext(),
                         R.array.category_array, android.R.layout.simple_spinner_item);
-                mSubDescSpinner.setEnabled(true);
                 break;
 
         }

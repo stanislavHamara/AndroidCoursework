@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by stan on 06/04/15.
+ * Created by Stanislav Hamara on 06/04/15.
+ *
+ * TabsActivity controlls the tab functionality and switches to the relevant layout based on
+ * users choice
  */
 public class TabsActivity extends Fragment {
 

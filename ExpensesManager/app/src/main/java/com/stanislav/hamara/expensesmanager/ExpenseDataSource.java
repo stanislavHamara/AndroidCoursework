@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by stan on 07/04/15.
+ * Created by Stanislav Hamara on 07/04/15.
+ *
+ * ExpenseDataSource is a class that defines and controlls the exchange of information between the application
+ * and SQLite Database
  */
 public class ExpenseDataSource {
 

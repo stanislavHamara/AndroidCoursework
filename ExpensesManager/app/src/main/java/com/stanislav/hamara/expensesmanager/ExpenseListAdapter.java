@@ -10,7 +10,9 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by stan on 07/04/15.
+ * Created by Stanislav Hamara on 07/04/15.
+ *
+ * ExpenseListAdapter defines the format and the content of an item in the expenses list
  */
 public class ExpenseListAdapter extends BaseAdapter {
 
@@ -22,7 +24,6 @@ public class ExpenseListAdapter extends BaseAdapter {
         this.context = context;
         this.list = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
     }
     @Override
     public int getCount() {
@@ -42,6 +43,7 @@ public class ExpenseListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
+        //create a list item with the custom layout
         if(vi == null)
             vi = inflater.inflate(R.layout.row, null);
 
@@ -50,6 +52,7 @@ public class ExpenseListAdapter extends BaseAdapter {
         TextView price = (TextView) vi.findViewById(R.id.price);
         TextView date = (TextView) vi.findViewById(R.id.time);
 
+        //assign the values from the list pulled from the database
         category.setText(list.get(position).getCategory() + ", " + list.get(position).getSubcategory());
         desc.setText(list.get(position).getDescription());
         price.setText(list.get(position).getCurrency() + list.get(position).getWhole_currency() + "." + list.get(position).getSmall_currency());

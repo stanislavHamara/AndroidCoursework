@@ -13,7 +13,10 @@ import java.util.List;
 
 
 /**
- * Created by stan on 07/04/15.
+ * Created by Stanislav Hamara on 07/04/15.
+ *
+ * SummaryFragment controlls the functionality of summary tab, which allows the user to view
+ * the list of the expenses and allows the user to claim the expenses back
  */
 public class SummaryFragment {
 
@@ -24,9 +27,9 @@ public class SummaryFragment {
 
     ExpenseDataSource mDatasource;
 
-    TextView poundExpenses;
-    TextView dollarExpenses;
-    TextView euroExpenses;
+    private TextView poundExpenses;
+    private TextView dollarExpenses;
+    private TextView euroExpenses;
 
     public SummaryFragment(View view, Activity activity, final ExpenseDataSource mDatasource){
 
@@ -38,6 +41,9 @@ public class SummaryFragment {
         dollarExpenses = (TextView) view.findViewById(R.id.dollar_expenses_view);
         euroExpenses = (TextView) view.findViewById(R.id.euro_expenses_view);
 
+
+        //user can long click the particular item in the list, which allows him to claim it back
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, long id) {
@@ -48,8 +54,7 @@ public class SummaryFragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 //remove from database
-                                Expense expense = (Expense)expensesAdapter.getItem(position);
-                                mDatasource.deleteExpense(expense.getDescription());
+                                mDatasource.deleteExpense(((Expense) expensesAdapter.getItem(position)).getDescription());
                                 //remove from listView
                                 values.remove(position);
                                 expensesAdapter.notifyDataSetChanged();
@@ -84,6 +89,8 @@ public class SummaryFragment {
 
     }
 
+
+    // calculates sum of expenses for each particular currency
     private void updateFooter(){
         float pounds = 0;
         float dollars = 0;
