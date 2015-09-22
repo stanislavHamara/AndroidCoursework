@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by Stanislav Hamara on 07/04/15.
  *
- * SummaryFragment controlls the functionality of summary tab, which allows the user to view
+ * SummaryController controlls the functionality of summary tab, which allows the user to view
  * the list of the expenses and allows the user to claim the expenses back
  */
-public class SummaryFragment {
+public class SummaryController {
 
     private Activity activity;
     private List<Expense> values;
@@ -31,7 +31,7 @@ public class SummaryFragment {
     private TextView dollarExpenses;
     private TextView euroExpenses;
 
-    public SummaryFragment(View view, Activity activity, final ExpenseDataSource mDatasource){
+    public SummaryController(View view, Activity activity, final ExpenseDataSource mDatasource){
 
         this.activity = activity;
         listView  = (ListView) view.findViewById(R.id.purchases_list);

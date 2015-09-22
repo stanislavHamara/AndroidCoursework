@@ -17,21 +17,21 @@ import java.util.List;
 public class ExpenseDataSource {
 
     private SQLiteDatabase mDatabase;
-    private MySQLiteHelper mDbHelper;
-    private String[] allColumns = {MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_CATEORY,
-            MySQLiteHelper.COLUMN_SUBCATEGORY,
-            MySQLiteHelper.COLUMN_DESC,
-            MySQLiteHelper.COLUMN_CURRENCY,
-            MySQLiteHelper.COLUMN_WHOLE,
-            MySQLiteHelper.COLUMN_SMALL,
-            MySQLiteHelper.COLUMN_RECLAIMED,
-            MySQLiteHelper.COLUMN_DATE};
+    private SQLiteHelper mDbHelper;
+    private String[] allColumns = {SQLiteHelper.COLUMN_ID,
+            SQLiteHelper.COLUMN_CATEORY,
+            SQLiteHelper.COLUMN_SUBCATEGORY,
+            SQLiteHelper.COLUMN_DESC,
+            SQLiteHelper.COLUMN_CURRENCY,
+            SQLiteHelper.COLUMN_WHOLE,
+            SQLiteHelper.COLUMN_SMALL,
+            SQLiteHelper.COLUMN_RECLAIMED,
+            SQLiteHelper.COLUMN_DATE};
             Context context;
 
 
     public ExpenseDataSource(Context c){
-        mDbHelper = new MySQLiteHelper(c);
+        mDbHelper = new SQLiteHelper(c);
         context = c;
     }
 
@@ -49,21 +49,21 @@ public class ExpenseDataSource {
 
     public void createExpense(String c, String sc, String desc, String curr, int w, int s, boolean r, String d){
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_CATEORY, c);
-        values.put(MySQLiteHelper.COLUMN_SUBCATEGORY, sc);
-        values.put(MySQLiteHelper.COLUMN_DESC, desc);
-        values.put(MySQLiteHelper.COLUMN_CURRENCY, curr);
-        values.put(MySQLiteHelper.COLUMN_WHOLE, w);
-        values.put(MySQLiteHelper.COLUMN_SMALL, s);
-        values.put(MySQLiteHelper.COLUMN_RECLAIMED, r);
-        values.put(MySQLiteHelper.COLUMN_DATE, d);
+        values.put(SQLiteHelper.COLUMN_CATEORY, c);
+        values.put(SQLiteHelper.COLUMN_SUBCATEGORY, sc);
+        values.put(SQLiteHelper.COLUMN_DESC, desc);
+        values.put(SQLiteHelper.COLUMN_CURRENCY, curr);
+        values.put(SQLiteHelper.COLUMN_WHOLE, w);
+        values.put(SQLiteHelper.COLUMN_SMALL, s);
+        values.put(SQLiteHelper.COLUMN_RECLAIMED, r);
+        values.put(SQLiteHelper.COLUMN_DATE, d);
 
-        mDatabase.insert(MySQLiteHelper.TABLE_NAME, null, values);
+        mDatabase.insert(SQLiteHelper.TABLE_NAME, null, values);
     }
 
     public List<Expense> getAllTasks() {
         List<Expense> expenses = new ArrayList<Expense>();
-        Cursor cursor = mDatabase.query(MySQLiteHelper.TABLE_NAME,
+        Cursor cursor = mDatabase.query(SQLiteHelper.TABLE_NAME,
                 allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -85,7 +85,7 @@ public class ExpenseDataSource {
         I could not make it work with IDs*/
 
         System.out.println("Comment deleted with id: " + desc);
-        mDatabase.delete(MySQLiteHelper.TABLE_NAME, MySQLiteHelper.COLUMN_DESC
+        mDatabase.delete(SQLiteHelper.TABLE_NAME, SQLiteHelper.COLUMN_DESC
                 + " like  '%" + desc + "'", null);
     }
 

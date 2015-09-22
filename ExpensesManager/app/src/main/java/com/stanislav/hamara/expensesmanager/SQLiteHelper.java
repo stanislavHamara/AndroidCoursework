@@ -9,7 +9,7 @@ import android.util.Log;
  * Created by Stanislav Hamara on 07/04/15.
  * MySQLHelper class
  */
-public class MySQLiteHelper extends SQLiteOpenHelper {
+public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME = "task";
     public static final String COLUMN_ID = "_id";
@@ -39,7 +39,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_DATE+ " text not null"
             + ");";
 
-    public MySQLiteHelper(Context context) {
+    public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -51,7 +51,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(MySQLiteHelper.class.getName(),
+        Log.w(SQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);

@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 /**
  * Created by Stanislav Hamara on 06/04/15.
  *
- * TabsActivity controlls the tab functionality and switches to the relevant layout based on
+ * TabFragment controlls the tab functionality and switches to the relevant layout based on
  * users choice
  */
-public class TabsActivity extends Fragment {
+public class TabFragment extends Fragment {
 
     private int mTabID;
     private ExpenseDataSource mDatasource;
@@ -35,17 +35,17 @@ public class TabsActivity extends Fragment {
         switch (mTabID){
             case 0:
                 view = inflater.inflate(R.layout.fragment_tab_home, null);
-                HomeFragment home = new HomeFragment(view, mDatasource);
+                HomeController home = new HomeController(view, mDatasource);
 
                 break;
             case 1:
                 view = inflater.inflate(R.layout.fragment_tab_expenses, null);
-                ExpensesFragment expenses = new ExpensesFragment(view, mDatasource);
+                ExpensesController expenses = new ExpensesController(view, mDatasource);
                 break;
 
             case 2:
                 view = inflater.inflate(R.layout.fragment_tab_summary, null);
-                SummaryFragment summary = new SummaryFragment(view, getActivity(), mDatasource);
+                SummaryController summary = new SummaryController(view, getActivity(), mDatasource);
                 break;
 
             default:

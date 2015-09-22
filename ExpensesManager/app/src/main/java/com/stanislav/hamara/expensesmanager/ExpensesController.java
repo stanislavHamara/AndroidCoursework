@@ -17,9 +17,9 @@ import java.util.zip.DataFormatException;
 /**
  * Created by Stanislav Hamara on 07/04/15.
  *
- * ExpensesFragment controls the functionality of expenses tab, which allows the user to create new expenses
+ * ExpensesController controls the functionality of expenses tab, which allows the user to create new expenses
  */
-public class ExpensesFragment {
+public class ExpensesController {
 
     private View view;
     private ExpenseDataSource mDatasource;
@@ -34,7 +34,7 @@ public class ExpensesFragment {
     private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 
 
-    public ExpensesFragment(View view, ExpenseDataSource mDatasource){
+    public ExpensesController(View view, ExpenseDataSource mDatasource){
         this.view = view;
         this.mDatasource = mDatasource;
         initExpenses();
@@ -53,7 +53,7 @@ public class ExpensesFragment {
                 try {
 
                     //find out if any journey si created at all
-                    SharedPreferences prefs = view.getContext().getSharedPreferences(HomeFragment.PREFS_NAME, 0);
+                    SharedPreferences prefs = view.getContext().getSharedPreferences(HomeController.PREFS_NAME, 0);
                     String name = prefs.getString("name", "None");
 
                     if(name.isEmpty() || name.contains("None"))

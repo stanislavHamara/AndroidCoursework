@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
         Fragment mFragment = null;
-        TabsActivity mTabFragment;
+        TabFragment mTabFragment;
 
 
 
@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             mFragment = (Fragment)fragmentList.get(tab.getPosition());
 
         if(mFragment == null){
-            mTabFragment = new TabsActivity();
+            mTabFragment = new TabFragment();
             Bundle mBundle = new Bundle();
              //control for different tabs
             switch (tab.getPosition()){
@@ -87,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             mTabFragment.setArguments(mBundle);
             fragmentList.add(mTabFragment);
         } else {
-            mTabFragment = (TabsActivity) mFragment;
+            mTabFragment = (TabFragment) mFragment;
 
         }
 

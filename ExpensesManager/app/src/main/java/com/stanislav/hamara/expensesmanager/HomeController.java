@@ -16,10 +16,10 @@ import java.util.zip.DataFormatException;
 /**
  * Created by Stanislav Hamara on 08/04/15.
  *
- * HomeFragment controls the home screen; allows the user to create/delete a journey
+ * HomeController controls the home screen; allows the user to create/delete a journey
  */
 
-public class HomeFragment {
+public class HomeController {
 
     public static String PREFS_NAME = "my_preferences";
     private Button deleteButton;
@@ -32,7 +32,7 @@ public class HomeFragment {
 
     TextView currentJourney;
 
-    public HomeFragment(View view, ExpenseDataSource mDatasource){
+    public HomeController(View view, ExpenseDataSource mDatasource){
         this.mDatasource = mDatasource;
         this.view = view;
         initHome();
